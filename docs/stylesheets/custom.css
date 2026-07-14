@@ -1,6 +1,7 @@
 /* ۱. لود فونت‌ها */
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css');
 
 :root {
   --ink: #1e1e24;
@@ -25,6 +26,16 @@
    استایل‌های عمومی (ظاهر، رنگ، فونت)
    این موارد در تمامی دستگاه‌ها اعمال می‌شوند
    ========================================= */
+
+/* ۲. اعمال فونت ساحل روی تیترها و دقیقاً روی تگ‌های متن در هدر بالای صفحه */
+h1, h2, h3, h4, h5, h6, 
+.md-header *,
+.md-header__topic .md-ellipsis,
+.md-header__title .md-ellipsis,
+.md-nav__title *,
+.md-tabs__link {
+  font-family: 'Sahel', 'Vazirmatn', sans-serif !important;
+}
 
 body,
 input,
