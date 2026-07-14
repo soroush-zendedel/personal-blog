@@ -31,7 +31,14 @@ nav:
 
 plugins:
   - search
-
+  # - blog:
+  #       blog_dir: .
+  #       post_dir: posts
+  #       post_date_format: full
+  - macros:
+        module_name: main
+  - awesome-pages
+  
 markdown_extensions:
   - admonition
   - pymdownx.details

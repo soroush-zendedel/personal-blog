@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 
+{% block content %}
+  <!-- بررسی می‌کند که آیا این فایل دارای دسته‌بندی در متادیتا هست یا خیر -->
+  {% if page.meta and page.meta.category %}
+    <div class="custom-post-header">
+      <div class="custom-post-meta">
+        <span class="custom-badge-category">
+          <i class="fa-solid fa-tag"></i> {{ page.meta.category }}
+        </span>
+        <span class="custom-badge-date">
+          <i class="fa-solid fa-calendar-days"></i> {{ page.meta.date }}
+        </span>
+        <!-- اگر متادیتای زمان مطالعه (مثلا read_time: "۵ دقیقه") هم داشتید می‌توانید اینجا اضافه کنید -->
+      </div>
+    </div>
+  {% endif %}
+  
+  <!-- این دستور محتوای اصلی مارک‌داون شما را رندر می‌کند -->
+  {{ super() }}
+{% endblock %}
 
 {% block footer %}
   {{ super() }}

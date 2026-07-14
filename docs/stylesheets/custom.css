@@ -607,3 +607,122 @@ body {
 .scrollable-bio::-webkit-scrollbar-thumb:hover {
   background: var(--crimson);
 }
+
+
+
+
+
+
+/* =========================================
+   کارت‌های مطالب (اشعار، نوشته‌ها، مقالات)
+   ========================================= */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.post-card {
+  background-color: var(--canvas); /* همخوان با پس‌زمینه کارت‌های شما */
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-decoration: none !important;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(185, 28, 28, 0.08); /* ایجاد هاله زرشکی در حالت هاور */
+  border-color: rgba(185, 28, 28, 0.2);
+}
+
+.post-category {
+  font-size: 0.8rem;
+  color: var(--crimson); /* استفاده از رنگ زرشکی تعریف شده */
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.post-card h3 {
+  color: var(--ink) !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  margin: 0 0 0.75rem 0 !important;
+  border-bottom: none !important; 
+}
+
+.post-excerpt {
+  font-size: 0.9rem;
+  color: rgba(30, 30, 36, 0.75);
+  line-height: 1.7;
+  flex-grow: 1;
+  margin: 0 0 1.2rem 0;
+}
+
+.post-meta {
+  font-size: 0.8rem;
+  color: rgba(30, 30, 36, 0.5);
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.75rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   هدر اختصاصی صفحات پست (تاریخ و دسته‌بندی)
+   ========================================= */
+.custom-post-header {
+  margin-top: 0.5rem;
+  margin-bottom: -1rem; /* برای نزدیک شدن به تیتر اصلی (H1) */
+}
+
+.custom-post-meta {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.custom-badge-category {
+  background-color: rgba(185, 28, 28, 0.06);
+  color: var(--crimson);
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(185, 28, 28, 0.15);
+  box-shadow: 0 2px 8px rgba(185, 28, 28, 0.05);
+}
+
+.custom-badge-date {
+  color: rgba(30, 30, 36, 0.6);
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.custom-badge-date i {
+  color: rgba(30, 30, 36, 0.4);
+}
