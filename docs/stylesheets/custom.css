@@ -616,6 +616,9 @@ body {
 /* =========================================
    کارت‌های مطالب (اشعار، نوشته‌ها، مقالات)
    ========================================= */
+/* =========================================
+   کارت‌های مطالب (همراه با عکس)
+   ========================================= */
 .post-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -624,37 +627,84 @@ body {
 }
 
 .post-card {
-  background-color: var(--canvas); /* همخوان با پس‌زمینه کارت‌های شما */
+  background-color: var(--canvas);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  padding: 1.5rem;
+  /* پدینگ کلی حذف شد تا عکس به لبه‌ها بچسبد */
   text-decoration: none !important;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  overflow: hidden; /* این خط باعث می‌شود گوشه‌های عکس هم مانند کارت گرد شود */
 }
 
 .post-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(185, 28, 28, 0.08); /* ایجاد هاله زرشکی در حالت هاور */
+  box-shadow: 0 10px 25px rgba(185, 28, 28, 0.08);
   border-color: rgba(185, 28, 28, 0.2);
+}
+
+/* استایل محفظه عکس */
+.post-card-image {
+  width: 100%;
+  height: 180px; /* می‌توانید این عدد را برای تغییر ارتفاع عکس عوض کنید */
+  border-bottom: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.post-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* باعث می‌شود عکس بدون دفرمه شدن، کادر را پر کند */
+  transition: transform 0.4s ease;
+}
+
+/* افکت زوم ملایم روی عکس هنگام هاور */
+.post-card:hover .post-card-image img {
+  transform: scale(1.05);
+}
+
+/* محتوای متنی کارت */
+.post-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .post-category {
   font-size: 0.8rem;
-  color: var(--crimson); /* استفاده از رنگ زرشکی تعریف شده */
+  color: var(--crimson);
   font-weight: 700;
   margin-bottom: 0.75rem;
   display: inline-block;
 }
 
+/* =========================================
+   استایل عنوان در کارت‌های صفحه اصلی
+   ========================================= */
 .post-card h3 {
   color: var(--ink) !important;
   font-size: 1.25rem !important;
   font-weight: 800 !important;
   margin: 0 0 0.75rem 0 !important;
+  position: relative;
+  padding-right: 14px; /* ایجاد فاصله برای خط کناری */
   border-bottom: none !important; 
+}
+
+/* یک خط عمودی ظریف و هنری کنار عنوان کارت */
+.post-card h3::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 3px;
+  background-color: var(--crimson);
+  border-radius: 4px;
+  opacity: 0.8;
 }
 
 .post-excerpt {
@@ -678,6 +728,127 @@ body {
 
 
 
+
+/* =========================================
+   هدر هنری و صمیمانه پست‌ها
+   ========================================= */
+.artistic-post-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  margin-top: 1rem;
+}
+
+/* =========================================
+   استایل عنوان هنری (با کاراکترهای نگارشی)
+   ========================================= */
+.artistic-title {
+  /* فونت به همان وزیرمتن اصلی برمی‌گردد */
+  color: var(--ink) !important;
+  font-weight: 900 !important;
+  font-size: 2.1rem !important;
+  margin-bottom: 1.25rem !important;
+  line-height: 1.4 !important;
+  position: relative;
+  display: inline-block; /* برای اینکه کاراکترها دقیقاً به متن بچسبند */
+}
+
+/* اضافه کردن گیومه‌های تزئینی به دو طرف متن */
+.artistic-title::before,
+.artistic-title::after {
+  color: var(--crimson);
+  font-weight: 300;
+  opacity: 0.6; /* کمی کمرنگ‌تر از متن اصلی تا تو ذوق نزند */
+  font-size: 2.4rem;
+  vertical-align: text-bottom;
+  line-height: 1;
+}
+
+.artistic-title::before {
+  content: "«";
+  margin-left: 8px;
+}
+
+.artistic-title::after {
+  content: "»";
+  margin-right: 8px;
+}
+
+.artistic-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* استایل ظریف‌تر برای تگ‌ها در نمای هنری */
+.custom-badge-category,
+.custom-badge-date {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.custom-badge-category {
+  color: var(--crimson);
+  font-weight: 700;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.custom-badge-date {
+  color: rgba(30, 30, 36, 0.5);
+  font-weight: 500;
+}
+
+/* =========================================
+   عکس اصلی صفحه (Hero Image)
+   ========================================= */
+.post-hero-image {
+  width: 100%;
+  height: 420px;
+  border-radius: 16px; /* گوشه‌های گردتر برای حس نرمی و صمیمیت */
+  overflow: hidden;
+  margin-bottom: 3rem; 
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04); /* سایه بسیار محو شبیه به قاب عکس */
+  border: none;
+}
+
+.post-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* در موبایل ارتفاع عکس را منطقی‌تر می‌کنیم */
+@media screen and (max-width: 59.9375em) {
+  .post-hero-image {
+    height: 250px;
+    border-radius: 12px;
+  }
+  .artistic-title {
+    font-size: 1.6rem !important;
+  }
+}
+
+/* =========================================
+   تغییرات محتوای متنی برای حس خواندن کتاب
+   ========================================= */
+/* چون عنوان را در بالا فراخوانی کردیم، اگر داخل مارک‌داون هم عنوان نوشته‌اید، آن را پنهان می‌کنیم تا دو بار تکرار نشود */
+.artistic-content .md-content__inner > h1:first-child {
+  display: none !important;
+}
+
+/* استایل متن برای خوانایی هنری‌تر */
+.artistic-content p {
+  font-size: 1.05rem;
+  line-height: 2.2; /* فاصله بیشتر خطوط برای آرامش چشم */
+  color: rgba(30, 30, 36, 0.85);
+  text-align: justify; /* تراز کردن متن دو طرف شبیه صفحات کتاب */
+}
 
 
 

@@ -22,7 +22,6 @@ def define_env(env):
             return f"<p style='color:var(--crimson);'>پوشه {base_folder} یافت نشد.</p>"
 
         posts = []
-        # گشتن در تمام پوشه‌ها و زیرپوشه‌ها به صورت خودکار
         for root, dirs, files in os.walk(target_dir):
             for filename in files:
                 if filename.endswith('.md') and filename != 'index.md':
@@ -33,7 +32,6 @@ def define_env(env):
                     metadata = extract_metadata(content)
                     
                     if metadata:
-                        # محاسبه مسیر نسبی و تصحیح اسلش‌ها برای لینک دادن دقیق
                         rel_dir = os.path.relpath(root, docs_dir).replace('\\', '/')
                         url_path = f"{rel_dir}/{filename.replace('.md', '/')}"
                         
@@ -42,22 +40,29 @@ def define_env(env):
                             'category': metadata.get('category', 'عمومی'),
                             'date': metadata.get('date', 'بدون تاریخ'),
                             'excerpt': metadata.get('excerpt', '...'),
+                            'image': metadata.get('image', ''), # گرفتن آدرس عکس
                             'url': url_path
                         })
         
-        # مرتب‌سازی نزولی بر اساس تاریخ
         posts.sort(key=lambda x: x['date'], reverse=True)
         
         html = '<div class="post-grid">\n'
         for post in posts[:limit]:
+            # تغییر جدید: اگر عکسی نبود، از عکس پیش‌فرض استفاده کن
+            img_src = post['image'] if post['image'] else 'assets/images/default-cover.svg'
+            image_html = f'<div class="post-card-image"><img src="{img_src}" alt="{post["title"]}"></div>'
+            
             html += f"""
             <a href="{post['url']}" class="post-card">
-                <span class="post-category">{post['category']}</span>
-                <h3>{post['title']}</h3>
-                <p class="post-excerpt">{post['excerpt']}</p>
-                <div class="post-meta">
-                    <span>{post['date']}</span>
-                    <span>خواندن</span>
+                {image_html}
+                <div class="post-card-content">
+                    <span class="post-category">{post['category']}</span>
+                    <h3>{post['title']}</h3>
+                    <p class="post-excerpt">{post['excerpt']}</p>
+                    <div class="post-meta">
+                        <span>{post['date']}</span>
+                        <span>خواندن</span>
+                    </div>
                 </div>
             </a>
             """

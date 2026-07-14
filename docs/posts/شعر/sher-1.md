@@ -3,6 +3,7 @@ title: "ثبت احوالم"
 category: "شعر"
 date: "1405/04/24"
 excerpt: "همه‌چیزم را نوشت، جز احوالم را..."
+image: assets/images/default-cover.svg
 ---
 
 # ثبت احوالم

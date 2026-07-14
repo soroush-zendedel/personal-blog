@@ -1,30 +1,46 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <!-- بررسی می‌کند که آیا این فایل دارای دسته‌بندی در متادیتا هست یا خیر -->
-  {% if page.meta and page.meta.category %}
-    <div class="custom-post-header">
-      <div class="custom-post-meta">
-        <span class="custom-badge-category">
-          <i class="fa-solid fa-tag"></i> {{ page.meta.category }}
-        </span>
-        <span class="custom-badge-date">
-          <i class="fa-solid fa-calendar-days"></i> {{ page.meta.date }}
-        </span>
-        <!-- اگر متادیتای زمان مطالعه (مثلا read_time: "۵ دقیقه") هم داشتید می‌توانید اینجا اضافه کنید -->
+  <!-- هدر هنری: شامل عنوان و متادیتا -->
+  <div class="artistic-post-header">
+    
+    <!-- خواندن خودکار عنوان از متادیتای فایل مارک‌داون -->
+    <h1 class="artistic-title">{{ page.title }}</h1>
+    
+    <!-- متادیتا -->
+    {% if page.meta and (page.meta.category or page.meta.date) %}
+      <div class="artistic-meta">
+        {% if page.meta.category %}
+          <span class="custom-badge-category">
+            <i class="fa-solid fa-tag"></i> {{ page.meta.category }}
+          </span>
+        {% endif %}
+        {% if page.meta.date %}
+          <span class="custom-badge-date">
+            <i class="fa-solid fa-calendar-days"></i> {{ page.meta.date }}
+          </span>
+        {% endif %}
       </div>
+    {% endif %}
+  </div>
+  
+  <!-- عکس اصلی (با لبه‌های نرم‌تر در CSS تنظیم می‌شود) -->
+  {% if page.meta and page.meta.image %}
+    <div class="post-hero-image">
+      <img src="{{ base_url }}/{{ page.meta.image }}" alt="{{ page.title }}">
     </div>
   {% endif %}
   
-  <!-- این دستور محتوای اصلی مارک‌داون شما را رندر می‌کند -->
-  {{ super() }}
+  <!-- محتوای متنی -->
+  <div class="artistic-content">
+    {{ super() }}
+  </div>
 {% endblock %}
 
 {% block footer %}
   {{ super() }}
-  
-  <!-- دکمه شناور بازگشت به سایت اصلی -->
-  <a href="https://soroush-zendedel.github.io/" class="floating-back-btn" title="بازگشت به سایت اصلی (سروش زنده‌دل)">
+  <!-- دکمه شناور بازگشت -->
+  <a href="https://soroush-zendedel.github.io/" class="floating-back-btn" title="بازگشت به سایت اصلی">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
     </svg>
