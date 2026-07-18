@@ -1491,3 +1491,83 @@ a.md-nav__link[href*="tags"]:hover::before {
   line-height: 1.6;
   padding: 0 1rem;
 }
+
+
+
+
+
+
+
+
+
+/* =========================================
+   استایل‌های اختصاصی پست‌های انگلیسی (چپ‌چین)
+   ========================================= */
+.english-mode {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+.english-mode figcaption {
+  text-align: left !important;
+  direction: ltr !important;
+  font-family: 'Lora', serif !important; /* اعمال همان فونت انگلیسی */
+}
+
+/* چپ‌چین کردن پاراگراف‌ها، لیست‌ها و تیترها */
+.english-mode p,
+.english-mode ul,
+.english-mode ol,
+.english-mode li,
+.english-mode h1,
+.english-mode h2,
+.english-mode h3,
+.english-mode h4,
+.english-mode .md-typeset h1,
+.english-mode .md-typeset h2 {
+  text-align: left !important;
+}
+
+/* اعمال فونت انگلیسی Lora (که از قبل لود کرده‌اید) روی متون */
+.english-mode p,
+.english-mode h1,
+.english-mode h2,
+.english-mode h3,
+.english-mode h4,
+.english-mode h5,
+.english-mode h6,
+.english-mode li,
+.english-mode a,
+.english-mode span,
+.english-mode .md-typeset h1,
+.english-mode .md-typeset h2 {
+  font-family: 'Lora', 'Vazirmatn', serif !important;
+}
+
+/* اصلاح ترازبندی متادیتای هدر (تاریخ و دسته‌بندی) در حالت انگلیسی */
+.artistic-post-header.english-mode .artistic-meta {
+  flex-direction: row; /* اطمینان از چیدمان صحیح در حالت ltr */
+}
+
+/* تغییر گیومه‌های فارسی (« ») به گیومه‌های انگلیسی (“ ”) در تیتر هنری */
+.artistic-post-header.english-mode .artistic-title::before {
+  content: "“";
+  margin-right: 8px;
+  margin-left: 0;
+}
+
+.artistic-post-header.english-mode .artistic-title::after {
+  content: "”";
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+/* اصلاح جایگاه خط عمودی کنار عنوان در کارت‌های مطالب مرتبط (اگر نیاز شد) */
+.english-mode .post-card h3::before {
+  right: auto;
+  left: 0;
+}
+.english-mode .post-card h3 {
+  padding-right: 0;
+  padding-left: 14px;
+}
