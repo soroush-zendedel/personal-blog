@@ -34,8 +34,8 @@
 
 
   <!-- هدر هنری: شامل عنوان و متادیتا -->
-  <div class="artistic-post-header">
-    
+  <!-- <div class="artistic-post-header"> -->
+<div class="artistic-post-header {% if page.meta.english %}english-mode{% endif %}" {% if page.meta.english %}dir="ltr"{% endif %}> 
     <!-- خواندن خودکار عنوان از متادیتای فایل مارک‌داون -->
     <h1 class="artistic-title">{{ page.title }}</h1>
     
@@ -84,7 +84,7 @@
       </a>
     </div>
     {% if page.meta.excerpt or page.meta.image_caption %}
-      <figcaption class="post-hero-caption">
+      <figcaption class="post-hero-caption {% if page.meta.english %}english-mode{% endif %}" {% if page.meta.english %}dir="ltr"{% endif %} style="text-align:center !important;">
         {{ page.meta.image_caption | default(page.meta.excerpt) }}
       </figcaption>
     {% endif %}
@@ -92,7 +92,8 @@
 {% endif %}
   
   <!-- محتوای متنی -->
-  <div class="artistic-content">
+  <!-- <div class="artistic-content"> -->
+  <div class="artistic-content {% if page.meta.english %}english-mode{% endif %}" {% if page.meta.english %}dir="ltr"{% endif %}>
     {{ super() }}
   </div>
 {% endblock %}

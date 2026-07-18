@@ -46,35 +46,38 @@ def define_env(env):
                         posts.append({
                             'title': metadata.get('title', 'بدون عنوان'),
                             'category': metadata.get('category', 'عمومی'),
+                            'folder_name': os.path.basename(root), # <-- این خط نام پوشه را استخراج می‌کند
                             'date': metadata.get('date', 'بدون تاریخ'),
                             'excerpt': metadata.get('excerpt', '...'),
                             'image': metadata.get('image', ''), 
                             'tags': metadata.get('tags', []),
-                            'url': url_path
+                            'url': url_path,
+                            # --- بخش جدید: دریافت وضعیت زبان انگلیسی از متادیتا ---
+                            'english': metadata.get('english', False) 
+                            # --------------------------------------------------------
                         })
         
         posts.sort(key=lambda x: x['date'], reverse=True)
-        # ... ادامه کدهای تولید HTML که در فایل شما وجود دارد ...
         
         html = '<div class="post-grid">\n'
         for post in posts[:limit]:
             img_src = post['image'] if post['image'] else 'assets/images/default-cover.svg'
-            # image_html = f'<div class="post-card-image"><img src="{img_src}" alt="{post["title"]}"></div>'
-            # image_html = f'<div class="post-card-image"><img src="{img_src}" alt="{post["title"]}" class="no-lightbox"></div>'
-            image_html = f'<div class="post-card-image"><img src="{img_src}" alt="{post["title"]}" class="skip-lightbox"></div>'
-            # --- بخش جدید: تولید کدهای HTML برای تگ‌ها ---
+            
             tags_html = ''
             if post['tags']:
                 tags_html = '<div class="post-card-tags">'
-                # برای زیبایی در کارت، نهایتاً ۳ تگ اول را نمایش می‌دهیم
                 for tag in post['tags'][:3]: 
                     tags_html += f'<span class="post-card-tag">#{tag}</span>'
                 tags_html += '</div>'
-            # -----------------------------------------------
 
-            # در این ساختار، کل کارت تبدیل به div شده و لینک‌ها به صورت مجزا به عکس و عنوان داده شده‌اند
+            # --- بخش جدید: اعمال کلاس و دایرکشن در صورت انگلیسی بودن محتوا ---
+            english_class = ' english-mode' if post['english'] else ''
+            english_dir = ' dir="ltr"' if post['english'] else ''
+            # -------------------------------------------------------------------
+
+            # در این ساختار، متغیرهای جدید به تگ post-card افزوده می‌شوند
             html += f"""
-            <div class="post-card">
+            <div class="post-card{english_class}"{english_dir}>
                 <a href="{post['url']}" class="post-card-image">
                     <img src="{img_src}" alt="{post["title"]}">
                 </a>
@@ -85,7 +88,7 @@ def define_env(env):
                     {tags_html} <!-- تگ‌ها اینجا قرار می‌گیرند -->
                     <div class="post-meta">
                         <span>{post['date']}</span>
-                        <span>خواندن</span>
+                        <span>{post['folder_name']}</span>
                     </div>
                 </div>
             </div>
