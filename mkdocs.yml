@@ -1,7 +1,7 @@
-site_name: ثبت‌احوال (سروش زنده‌دل)
+site_name: ثبت‌احوال (سروش پیری زنده‌دل)
 site_description: دفتری برای نوشته‌ها، درددل‌ها و اشعار
-site_author: Soroush Zendedel
-site_url: https://soroush-zendedel.github.io/sabte-ahval/
+site_author: Soroush Zendedel سروش زنده دل
+site_url: https://soroush-zendedel.github.io/personal-blog/
 
 theme:
   name: material
