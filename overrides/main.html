@@ -7,7 +7,10 @@
       
       <div class="author-avatar-wrapper">
         <!-- آدرس عکس پروفایل خود را در خط زیر جایگزین کنید -->
-        <img src="{{ base_url }}/assets/images/author.jpg" alt="سروش زنده دل">
+        <picture>
+          <source srcset="{{ base_url }}/assets/images/author.webp" type="image/webp">
+          <img src="{{ base_url }}/assets/images/author.jpg" alt="سروش زنده دل" width="1254" height="1254" decoding="async">
+        </picture>
       </div>
       
       <div class="author-info">
@@ -80,7 +83,7 @@
     <div class="post-hero-image">
       <a href="{{ base_url }}/{{ page.meta.image }}" class="glightbox" data-type="image" title="{{ page.title }}">
         <!-- استفاده از alt اختصاصی؛ در صورت عدم وجود، از عنوان صفحه استفاده می‌شود -->
-        <img src="{{ base_url }}/{{ page.meta.image }}" alt="{{ page.meta.image_alt | default(page.title) }}">
+        <img src="{{ base_url }}/{{ page.meta.image }}" alt="{{ page.meta.image_alt | default(page.title) }}" width="1600" height="900" fetchpriority="high" decoding="async">
       </a>
     </div>
     {% if page.meta.excerpt or page.meta.image_caption %}

@@ -27,7 +27,7 @@ theme:
 
 extra_css:
   - stylesheets/custom.css
-  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
+  - stylesheets/fontawesome/all.min.css
 
 extra_javascript:
   - javascripts/custom.js
@@ -56,6 +56,8 @@ plugins:
         effect: zoom # افکت باز شدن عکس (zoom, fade, none)
         zoomable: true
         draggable: true
+        skip_classes:
+          - skip-lightbox
   - git-revision-date-localized:
         enable_creation_date: true
         type: timeago # یا مقدار date برای نمایش تاریخ دقیق
@@ -75,4 +77,4 @@ extra:
   generator: false
   meta:
     - name: google-site-verification
-      content: <meta name="google-site-verification" content="1zazcy1c77XqQzgQ472O63fbqTXGxB2ZrFkt2kVu-uo" />
+      content: 1zazcy1c77XqQzgQ472O63fbqTXGxB2ZrFkt2kVu-uo

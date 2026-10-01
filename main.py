@@ -62,6 +62,17 @@ def define_env(env):
         html = '<div class="post-grid">\n'
         for post in posts[:limit]:
             img_src = post['image'] if post['image'] else 'assets/images/default-cover.svg'
+            webp_path = os.path.splitext(img_src)[0] + '.webp'
+            webp_src = (
+                f'<source srcset="{webp_path}" type="image/webp">'
+                if os.path.isfile(os.path.join(docs_dir, webp_path.replace('/', os.sep)))
+                else ''
+            )
+            img_markup = (
+                f'<picture>{webp_src}<img src="{img_src}" alt="{post["title"]}" class="post-card-cover skip-lightbox" loading="lazy" decoding="async" width="1600" height="900"></picture>'
+                if webp_src
+                else f'<img src="{img_src}" alt="{post["title"]}" class="post-card-cover skip-lightbox" loading="lazy" decoding="async" width="1600" height="900">'
+            )
             
             tags_html = ''
             if post['tags']:
@@ -79,7 +90,7 @@ def define_env(env):
             html += f"""
             <div class="post-card{english_class}"{english_dir}>
                 <a href="{post['url']}" class="post-card-image">
-                    <img src="{img_src}" alt="{post["title"]}">
+                    {img_markup}
                 </a>
                 <div class="post-card-content">
                     <span class="post-category">{post['category']}</span>
