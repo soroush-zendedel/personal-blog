@@ -1400,15 +1400,16 @@ body {
   }
 
   .author-profile-card-mobile .author-title {
-    font-size: clamp(0.78rem, 3.8vw, 0.98rem);
+    font-size: clamp(0.78rem, 3.6vw, 0.94rem);
     font-weight: 800;
     color: var(--ink);
     margin: 0 0 0.1rem 0;
     border: none;
     padding: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.35;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
   }
 
   .author-profile-card-mobile .author-subtitle {
