@@ -1,27 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://soroush-zendedel.github.io/silk-road/</loc>
-         <lastmod>2026-10-01</lastmod>
+         <loc>https://soroush-zendedel.github.io/countdown/</loc>
+         <lastmod>2026-10-02</lastmod>
     </url>
     <url>
-         <loc>https://soroush-zendedel.github.io/silk-road/about/</loc>
-         <lastmod>2026-10-01</lastmod>
+         <loc>https://soroush-zendedel.github.io/countdown/about/</loc>
+         <lastmod>2026-10-02</lastmod>
     </url>
     <url>
-         <loc>https://soroush-zendedel.github.io/silk-road/00-introduction/ch01-Land-and-man-in-Central-Eurasia/</loc>
-         <lastmod>2026-10-01</lastmod>
+         <loc>https://soroush-zendedel.github.io/countdown/00-introduction/ch01-the-quest-for-mathematical-grail/</loc>
+         <lastmod>2026-10-02</lastmod>
     </url>
     <url>
-         <loc>https://soroush-zendedel.github.io/silk-road/00-introduction/ch02-inner-asian-empires-and-the-silk-road/</loc>
-         <lastmod>2026-10-01</lastmod>
+         <loc>https://soroush-zendedel.github.io/countdown/00-introduction/ch02-a-very-long-story/</loc>
+         <lastmod>2026-10-02</lastmod>
     </url>
     <url>
-         <loc>https://soroush-zendedel.github.io/silk-road/00-introduction/ch03-religious-realms/</loc>
-         <lastmod>2026-10-01</lastmod>
+         <loc>https://soroush-zendedel.github.io/countdown/00-introduction/ch03-the-first-steps/</loc>
+         <lastmod>2026-10-02</lastmod>
     </url>
     <url>
-         <loc>https://soroush-zendedel.github.io/silk-road/includes/abbreviations/</loc>
-         <lastmod>2026-10-01</lastmod>
+         <loc>https://soroush-zendedel.github.io/countdown/00-introduction/ch04-the-earliest-counting-machines/</loc>
+         <lastmod>2026-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://soroush-zendedel.github.io/countdown/00-introduction/ch05-the-first-numbers-in-history/</loc>
+         <lastmod>2026-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://soroush-zendedel.github.io/countdown/00-introduction/ch06-the-common-structure-of-human-mind/</loc>
+         <lastmod>2026-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://soroush-zendedel.github.io/countdown/00-introduction/ch07-numbers-and-letters/</loc>
+         <lastmod>2026-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://soroush-zendedel.github.io/countdown/00-introduction/ch08-the-history-of-a-great-invention/</loc>
+         <lastmod>2026-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://soroush-zendedel.github.io/countdown/00-introduction/ch09-computation-figures-and-numbers/</loc>
+         <lastmod>2026-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://soroush-zendedel.github.io/countdown/00-introduction/ch10-in-conclusion/</loc>
+         <lastmod>2026-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://soroush-zendedel.github.io/countdown/includes/abbreviations/</loc>
+         <lastmod>2026-10-02</lastmod>
     </url>
 </urlset>
