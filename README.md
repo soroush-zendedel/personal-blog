@@ -106,11 +106,11 @@ Write the post here.
 
 Existing posts use `title`, `description`, `category`, `date`, `excerpt`, and `tags`. The image and its alt text are optional. If `image_caption` is omitted, the theme uses `excerpt` as the caption. Set `main_page: true` to include a post in the homepage cards; posts without it remain accessible through their category pages and search. Set `draft: true` to omit a post from the homepage cards. For English content, set `english: true` to enable left-to-right layout.
 
-Keep the file path aligned with its category—for example, `docs/posts/poetry/ravi/new-poem.md`. Put images in an appropriate subdirectory of `docs/assets/images/` and use a path relative to `docs/` in the metadata.
+Keep the file path aligned with its category—for example, `docs/posts/poetry/ravi/new-poem.md`. Use a descriptive lowercase filename with hyphens between words (for example, `i-call-your-name.md`); keep the reader-facing title in the `title` metadata. MkDocs generates the sitemap from the current file paths, so do not edit `sitemap.xml` by hand. Put images in an appropriate subdirectory of `docs/assets/images/` and use a path relative to `docs/` in the metadata.
 
 ## Deployment
 
-The repository is configured to publish automatically to GitHub Pages. Every push to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which installs the dependencies and runs `mkdocs gh-deploy --force`. The generated site is published to the `gh-pages` branch. For deployment to work, configure GitHub Pages to serve from `gh-pages` and allow the workflow to write repository contents.
+The repository is configured to publish automatically to GitHub Pages. Every push to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which installs the dependencies and runs `mkdocs gh-deploy --force`. The generated site is published to the `gh-pages` branch. For deployment to work, configure GitHub Pages to serve from `gh-pages` and allow the workflow to write repository contents. The host-level `robots.txt` and sitemap index are maintained by the root-site repository; that index already includes this project's generated sitemap, so this subproject does not need its own `robots.txt`.
 
 ## Project structure
 
@@ -249,11 +249,11 @@ main_page: true
 
 فیلدهای `title`، `description`، `category`، `date`، `excerpt` و `tags` در نمونه‌های موجود استفاده می‌شوند. تصویر و متن جایگزین آن اختیاری‌اند. اگر `image_caption` مشخص نشود، قالب از `excerpt` به‌عنوان زیرنویس تصویر استفاده می‌کند. `main_page: true` نوشته را در کارت‌های صفحهٔ اصلی قرار می‌دهد؛ بدون این مقدار، نوشته همچنان از مسیر دسته‌بندی و جستجو قابل دسترسی است. برای پنهان‌کردن پیش‌نویس از کارت‌های صفحهٔ اصلی، `draft: true` بگذارید. برای محتوای انگلیسی `english: true` جهت و چیدمان چپ‌به‌راست را فعال می‌کند.
 
-مسیر پیشنهادی فایل با دسته‌بندی هماهنگ باشد؛ برای مثال `docs/posts/poetry/ravi/new-poem.md`. فایل تصویر را در زیرپوشه‌ای مناسب از `docs/assets/images/` قرار دهید و مسیر آن را نسبت به پوشهٔ `docs/` در فراداده بنویسید.
+مسیر فایل با دسته‌بندی هماهنگ باشد؛ برای مثال `docs/posts/poetry/ravi/new-poem.md`. برای نام فایل از حروف کوچک و واژه‌های جداشده با خط تیره استفاده کنید؛ عنوان نمایشی خواننده را در فرادادهٔ `title` بنویسید. MkDocs سایتمپ را از مسیرهای فعلی فایل‌ها می‌سازد؛ بنابراین `sitemap.xml` را دستی ویرایش نکنید. فایل تصویر را در زیرپوشه‌ای مناسب از `docs/assets/images/` قرار دهید و مسیر آن را نسبت به پوشهٔ `docs/` در فراداده بنویسید.
 
 ## انتشار
 
-مخزن برای انتشار خودکار روی GitHub Pages تنظیم شده است. هر بار که به شاخهٔ `main` پوش می‌شود، گردش‌کار [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) وابستگی‌ها را نصب می‌کند و دستور `mkdocs gh-deploy --force` را اجرا می‌کند. خروجی در شاخهٔ `gh-pages` منتشر می‌شود. برای کارکرد انتشار، تنظیم GitHub Pages مخزن باید از شاخهٔ `gh-pages` سرویس بدهد و دسترسی نوشتن گردش‌کار به محتوا فعال باشد.
+مخزن برای انتشار خودکار روی GitHub Pages تنظیم شده است. هر بار که به شاخهٔ `main` پوش می‌شود، گردش‌کار [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) وابستگی‌ها را نصب می‌کند و دستور `mkdocs gh-deploy --force` را اجرا می‌کند. خروجی در شاخهٔ `gh-pages` منتشر می‌شود. برای کارکرد انتشار، تنظیم GitHub Pages مخزن باید از شاخهٔ `gh-pages` سرویس بدهد و دسترسی نوشتن گردش‌کار به محتوا فعال باشد. فایل `robots.txt` در ریشهٔ دامنه و نمایهٔ سایتمپ در مخزن سایت اصلی نگهداری می‌شوند؛ آن نمایه از قبل سایتمپ ساخته‌شدهٔ این پروژه را در بر می‌گیرد، پس این زیرپروژه به `robots.txt` جداگانه نیاز ندارد.
 
 ## ساختار پروژه
 
