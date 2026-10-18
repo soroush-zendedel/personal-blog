@@ -109,3 +109,116 @@ main_page: true
 - ماکروهای سفارشی Python برای نمایش کارت‌های نوشته در صفحهٔ اصلی
 - GitHub Actions و GitHub Pages برای انتشار
 
+---
+
+# Sabt-e Ahval (Personal Blog)
+
+**Sabt-e Ahval** is Soroush Zendedel’s personal notebook for essays, reflections, poetry, and stories—a place to write at the intersection of technology and emotion.
+
+- **Website:** [soroush-zendedel.github.io/personal-blog](https://soroush-zendedel.github.io/personal-blog/)
+- **Author:** Soroush Zendedel — Technical Artist and Writer
+- **Primary language:** Persian. Individual English posts can also be marked in their metadata.
+
+## Content
+
+Posts are organized by topic under `docs/posts/`:
+
+| Directory | Content |
+| --- | --- |
+| `poetry/` | Poems, with subcategories such as `ravi/`, `khiyal/`, and `nostalgia/` |
+| `journal/` | Personal narratives and ongoing series |
+| `reflections/` | Notes and reflections |
+| `short-stories/` | Short stories |
+| `geek/` | Technology and geek-related writing |
+
+The homepage in `docs/index.md` displays posts marked `main_page: true`. `docs/tags.md` provides the tag index. Images and other static assets live in `docs/assets/`.
+
+## Run locally
+
+The site is built with Python and MkDocs. You need Python 3 and `pip`. From the repository root, create a virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+Activate it in PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+On macOS or Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+Install the dependencies and start the local preview:
+
+```bash
+python -m pip install -r requirements.txt
+mkdocs serve
+```
+
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000). The preview refreshes when files change. To build the static site into the ignored `site/` directory, run:
+
+```bash
+mkdocs build
+```
+
+## Add or edit a post
+
+Create a Markdown file with YAML metadata at the top. For example:
+
+```markdown
+---
+title: "Post title"
+description: "A short description for the page and search engines."
+category: "Essay"
+date: "2026-10-19"
+excerpt: "A short summary shown on the post card."
+image: assets/images/example/cover.jpg
+image_alt: "A text description of the image for accessibility."
+image_caption: "Optional image caption."
+tags:
+  - reflection
+  - ideas
+main_page: true
+---
+
+# Post title
+
+Write the post here.
+```
+
+Existing posts use `title`, `description`, `category`, `date`, `excerpt`, and `tags`. The image and its alt text are optional. If `image_caption` is omitted, the theme uses `excerpt` as the caption. Set `main_page: true` to include a post in the homepage cards; posts without it remain accessible through their category pages and search. Set `draft: true` to omit a post from the homepage cards. For English content, set `english: true` to enable left-to-right layout.
+
+Keep the file path aligned with its category—for example, `docs/posts/poetry/ravi/new-poem.md`. Put images in an appropriate subdirectory of `docs/assets/images/` and use a path relative to `docs/` in the metadata.
+
+## Deployment
+
+The repository is configured to publish automatically to GitHub Pages. Every push to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which installs the dependencies and runs `mkdocs gh-deploy --force`. The generated site is published to the `gh-pages` branch. For deployment to work, configure GitHub Pages to serve from `gh-pages` and allow the workflow to write repository contents.
+
+## Project structure
+
+```text
+.
+├── .github/workflows/deploy.yml  # Automated build and deployment
+├── docs/                         # Website pages and content
+│   ├── assets/                   # Images, fonts, CSS, and JavaScript
+│   ├── posts/                    # Essays, poems, and stories
+│   ├── index.md                  # Homepage
+│   └── tags.md                   # Tag index
+├── overrides/                    # Custom theme templates
+├── main.py                       # MkDocs macros for post cards
+├── mkdocs.yml                    # Site and plugin configuration
+└── requirements.txt              # Python dependencies
+```
+
+## Technology
+
+- [MkDocs](https://www.mkdocs.org/) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
+- MkDocs plugins for search, tags, image galleries, Git revision dates, and page generation
+- Custom Python macros for rendering post cards on the homepage
+- GitHub Actions and GitHub Pages for deployment
+
