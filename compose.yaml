@@ -1,0 +1,19 @@
+services:
+  docs:
+    profiles: ["dev"]
+    build:
+      context: .
+      target: development
+    command: mkdocs serve --dev-addr=0.0.0.0:8000
+    ports:
+      - "${MKDOCS_PORT:-8000}:8000"
+    volumes:
+      - .:/workspace
+
+  site:
+    profiles: ["production"]
+    build:
+      context: .
+      target: production
+    ports:
+      - "${BLOG_PORT:-8080}:80"

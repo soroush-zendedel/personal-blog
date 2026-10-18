@@ -53,6 +53,24 @@ Open [http://127.0.0.1:8000](http://127.0.0.1:8000). The preview refreshes when 
 mkdocs build
 ```
 
+### Docker Compose
+
+Install Docker Desktop or Docker Engine with Compose v2. Start the live development preview from the repository root:
+
+```bash
+docker compose --profile dev up --build
+```
+
+Open [http://localhost:8000](http://localhost:8000). The repository is mounted into the container, so changes to Markdown, images, styles, and configuration appear in the live preview. Stop it with `Ctrl+C`, or run `docker compose --profile dev down` in another terminal. To use a different host port, set `MKDOCS_PORT` (for example, `$env:MKDOCS_PORT=8001` in PowerShell, then run the command again).
+
+To build and run the optimized static site with Nginx instead, use the production profile:
+
+```bash
+docker compose --profile production up --build
+```
+
+Open [http://localhost:8080](http://localhost:8080). Rebuild with `--build` after changing site content. Stop it with `Ctrl+C` or `docker compose --profile production down`. Set `BLOG_PORT` to choose a different host port.
+
 ## Add or edit a post
 
 Create a Markdown file with YAML metadata at the top. For example:
@@ -91,6 +109,9 @@ The repository is configured to publish automatically to GitHub Pages. Every pus
 ```text
 .
 ├── .github/workflows/deploy.yml  # Automated build and deployment
+├── Dockerfile                    # Development and production image targets
+├── compose.yaml                  # Local development and static site services
+├── .dockerignore                 # Files excluded from Docker build context
 ├── docs/                         # Website pages and content
 │   ├── assets/                   # Images, fonts, CSS, and JavaScript
 │   ├── posts/                    # Essays, poems, and stories
@@ -166,6 +187,24 @@ mkdocs serve
 mkdocs build
 ```
 
+### داکر کامپوز
+
+Docker Desktop یا Docker Engine به‌همراه Compose نسخهٔ ۲ را نصب کنید. برای اجرای پیش‌نمایش توسعه از ریشهٔ مخزن بزنید:
+
+```bash
+docker compose --profile dev up --build
+```
+
+سپس [http://localhost:8000](http://localhost:8000) را باز کنید. پوشهٔ پروژه داخل کانتینر mount می‌شود؛ تغییر فایل‌های Markdown، تصویرها، استایل‌ها و تنظیمات در پیش‌نمایش زنده دیده می‌شود. برای توقف `Ctrl+C` را بزنید یا در ترمینال دیگری `docker compose --profile dev down` را اجرا کنید. برای انتخاب پورت دیگری روی میزبان، مقدار `MKDOCS_PORT` را تنظیم کنید؛ مثلاً در PowerShell ابتدا `$env:MKDOCS_PORT=8001` و سپس دستور اجرا را وارد کنید.
+
+برای ساخت و اجرای نسخهٔ ایستای بهینه‌شده با Nginx از پروفایل production استفاده کنید:
+
+```bash
+docker compose --profile production up --build
+```
+
+سایت در [http://localhost:8080](http://localhost:8080) در دسترس است. پس از تغییر محتوا، با `--build` دوباره image را بسازید. برای توقف `Ctrl+C` یا `docker compose --profile production down` را اجرا کنید. با تنظیم `BLOG_PORT` می‌توانید پورت میزبان را تغییر دهید.
+
 ## افزودن یا ویرایش نوشته
 
 یک فایل Markdown با فرادادهٔ YAML در ابتدای آن بسازید. برای نمونه:
@@ -204,6 +243,9 @@ main_page: true
 ```text
 .
 ├── .github/workflows/deploy.yml  # ساخت و انتشار خودکار
+├── Dockerfile                    # imageهای توسعه و انتشار
+├── compose.yaml                  # سرویس‌های توسعه و سایت ایستا
+├── .dockerignore                 # فایل‌های خارج از بافت ساخت Docker
 ├── docs/                         # صفحه‌ها و محتوای وب‌سایت
 │   ├── assets/                   # تصویرها، فونت‌ها، CSS و JavaScript
 │   ├── posts/                    # نوشته‌ها و شعرها
