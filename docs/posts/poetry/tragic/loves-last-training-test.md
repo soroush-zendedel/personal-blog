@@ -19,6 +19,7 @@ tags:
   - Acceptance
   - Healing
   - Letting Go
+english: true
 
 ---
 

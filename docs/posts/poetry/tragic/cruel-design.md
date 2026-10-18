@@ -19,6 +19,7 @@ tags:
   - Memory
   - Fate
   - Loss
+english: true
 
 ---
 
