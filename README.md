@@ -71,6 +71,14 @@ docker compose --profile production up --build
 
 Open [http://localhost:8080](http://localhost:8080). Rebuild with `--build` after changing site content. Stop it with `Ctrl+C` or `docker compose --profile production down`. Set `BLOG_PORT` to choose a different host port.
 
+If the default PyPI file host is unreachable during the image build, use the Tsinghua PyPI mirror variant:
+
+```bash
+docker compose --profile dev-mirror up --build
+```
+
+This uses `Dockerfile.mirror`, which installs Debian and Python packages from Tsinghua mirrors, and serves the live preview at [http://localhost:8002/personal-blog/](http://localhost:8002/personal-blog/). The host port can be changed with `MKDOCS_MIRROR_PORT`. Stop it with `Ctrl+C` or `docker compose --profile dev-mirror down`. The mirrors must be reachable from Docker; see the [Tsinghua Debian mirror instructions](https://mirrors.tuna.tsinghua.edu.cn/help/debian/) and [PyPI mirror instructions](https://mirror.tuna.tsinghua.edu.cn/help/pypi/).
+
 ## Add or edit a post
 
 Create a Markdown file with YAML metadata at the top. For example:
@@ -110,6 +118,7 @@ The repository is configured to publish automatically to GitHub Pages. Every pus
 .
 ├── .github/workflows/deploy.yml  # Automated build and deployment
 ├── Dockerfile                    # Development and production image targets
+├── Dockerfile.mirror             # Development image using the Tsinghua PyPI mirror
 ├── compose.yaml                  # Local development and static site services
 ├── .dockerignore                 # Files excluded from Docker build context
 ├── docs/                         # Website pages and content
@@ -205,6 +214,14 @@ docker compose --profile production up --build
 
 سایت در [http://localhost:8080](http://localhost:8080) در دسترس است. پس از تغییر محتوا، با `--build` دوباره image را بسازید. برای توقف `Ctrl+C` یا `docker compose --profile production down` را اجرا کنید. با تنظیم `BLOG_PORT` می‌توانید پورت میزبان را تغییر دهید.
 
+اگر هنگام ساخت image دسترسی به میزبان فایل‌های PyPI برقرار نیست، نسخهٔ آینهٔ Tsinghua را اجرا کنید:
+
+```bash
+docker compose --profile dev-mirror up --build
+```
+
+این روش از `Dockerfile.mirror` استفاده می‌کند؛ بسته‌های Debian و Python را از آینه‌های Tsinghua دریافت می‌کند و پیش‌نمایش زنده را در [http://localhost:8002/personal-blog/](http://localhost:8002/personal-blog/) اجرا می‌کند. پورت میزبان را با `MKDOCS_MIRROR_PORT` می‌توانید تغییر دهید. برای توقف `Ctrl+C` یا `docker compose --profile dev-mirror down` را اجرا کنید. آینه‌ها باید از داخل Docker در دسترس باشند؛ راهنمای [آینهٔ Debian](https://mirrors.tuna.tsinghua.edu.cn/help/debian/) و [آینهٔ PyPI](https://mirror.tuna.tsinghua.edu.cn/help/pypi/) را ببینید.
+
 ## افزودن یا ویرایش نوشته
 
 یک فایل Markdown با فرادادهٔ YAML در ابتدای آن بسازید. برای نمونه:
@@ -244,6 +261,7 @@ main_page: true
 .
 ├── .github/workflows/deploy.yml  # ساخت و انتشار خودکار
 ├── Dockerfile                    # imageهای توسعه و انتشار
+├── Dockerfile.mirror             # image توسعه با آینهٔ Tsinghua برای PyPI
 ├── compose.yaml                  # سرویس‌های توسعه و سایت ایستا
 ├── .dockerignore                 # فایل‌های خارج از بافت ساخت Docker
 ├── docs/                         # صفحه‌ها و محتوای وب‌سایت

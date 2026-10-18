@@ -10,6 +10,18 @@ services:
     volumes:
       - .:/workspace
 
+  docs-mirror:
+    profiles: ["dev-mirror"]
+    build:
+      context: .
+      dockerfile: Dockerfile.mirror
+      target: development
+    command: mkdocs serve --dev-addr=0.0.0.0:8000
+    ports:
+      - "${MKDOCS_MIRROR_PORT:-8002}:8000"
+    volumes:
+      - .:/workspace
+
   site:
     profiles: ["production"]
     build:
