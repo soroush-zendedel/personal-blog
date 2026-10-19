@@ -3,6 +3,9 @@ site_description: دفتری برای نوشته‌ها، درددل‌ها و �
 site_author: Soroush Zendedel سروش زنده دل
 site_url: https://soroush-zendedel.github.io/personal-blog/
 
+hooks:
+  - hooks/collections.py
+
 theme:
   name: material
   language: fa

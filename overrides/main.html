@@ -99,6 +99,37 @@
   <div class="artistic-content {% if page.meta.english %}english-mode{% endif %}" {% if page.meta.english %}dir="ltr"{% endif %}>
     {{ super() }}
   </div>
+
+  {% if page.file.src_uri != 'index.md' %}
+    {% set crumbs = [
+      {'name': 'سایت اصلی', 'url': 'https://soroush-zendedel.github.io/'},
+      {'name': 'ثبت‌احوال', 'url': config.site_url}
+    ] %}
+    {% set page_source = page.file.src_uri %}
+    {% set page_dir = page_source.rsplit('/', 1)[0] if '/' in page_source else '' %}
+    {% for collection in config.extra.collections|sort(attribute='path') %}
+      {% if (page_dir == collection.path or page_dir.startswith(collection.path ~ '/')) and page_source != (collection.path ~ '/index.md') %}
+        {% set _ = crumbs.append({'name': collection.title, 'url': config.site_url ~ collection.path ~ '/'}) %}
+      {% endif %}
+    {% endfor %}
+    {% set _ = crumbs.append({'name': page.title, 'url': page.canonical_url}) %}
+    <nav class="site-breadcrumb" aria-label="مسیر صفحه" {% if page.meta.english %}dir="ltr"{% else %}dir="rtl"{% endif %}>
+      <ol>
+        {% for crumb in crumbs %}
+          <li>
+            {% if not loop.last %}<a href="{{ crumb.url }}">{{ crumb.name }}</a>{% else %}<span aria-current="page">{{ crumb.name }}</span>{% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </nav>
+    {% set schema_items = [] %}
+    {% for crumb in crumbs %}
+      {% set _ = schema_items.append({'@type': 'ListItem', 'position': loop.index, 'name': crumb.name, 'item': crumb.url}) %}
+    {% endfor %}
+    <script type="application/ld+json">
+      {{ {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': schema_items} | tojson }}
+    </script>
+  {% endif %}
 {% endblock %}
 
 {% block footer %}
